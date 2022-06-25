@@ -19,7 +19,7 @@ public class BruxaMovementState : BruxaBaseState
     {
         // Debug.Log(GetStateName());
 
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKey(bruxa.flyState.flyUp))
         {
             bruxa.SwitchState(bruxa.flyState);
         }

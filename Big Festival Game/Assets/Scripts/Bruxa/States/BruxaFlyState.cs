@@ -11,6 +11,8 @@ public class BruxaFlyState : BruxaBaseState
 
     public int   flyMaxLevel=2;
 
+    public KeyCode flyUp, flyDown;
+
     int currentFlyingLevel=0;
     float currentY;
     bool switchingFlyLevel = false;
@@ -85,13 +87,13 @@ public class BruxaFlyState : BruxaBaseState
     {
         if(switchingFlyLevel) return;
 
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKey(flyUp))
         {
             if(currentFlyingLevel >= flyMaxLevel) return;
             bruxa.StartCoroutine(SwitchFlyLevel(bruxa));
 
         }
-        else if (Input.GetKeyDown("q"))
+        else if (Input.GetKey(flyDown))
         {
             if(currentFlyingLevel <= 0) return;
             bruxa.StartCoroutine(SwitchFlyLevel(bruxa, -1));
