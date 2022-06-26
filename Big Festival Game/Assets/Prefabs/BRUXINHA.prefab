@@ -17358,7 +17358,7 @@ GameObject:
   - component: {fileID: 8068280926933001213}
   m_Layer: 0
   m_Name: BRUXINHA
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17405,7 +17405,7 @@ MonoBehaviour:
   inventoryUI: {fileID: 0}
   inventoryUIBG: {fileID: 0}
   itensChar: []
-  spriteDefault: {fileID: 21300000, guid: db1145ce7569d2340813a1307c3aae7a, type: 3}
+  spriteDefault: {fileID: 21300000, guid: e5ce869b298540c47bba44d735fd5c74, type: 3}
   itensUI:
   - {fileID: 0}
   - {fileID: 0}
@@ -17479,7 +17479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStateName: 
   movementState:
-    movementSpeed: 10
+    movementSpeed: 4
     movement: {x: 0, y: 0, z: 0}
   flyState:
     flySpeed: 15

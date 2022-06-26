@@ -23,10 +23,10 @@ public class ZombieWalkState : ZombieBaseState
     {
         zombie._agent.SetDestination(zombie.bruxinha.transform.position);
         zombie.transform.LookAt(zombie.bruxinha.transform.position);
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Vector3.Distance(zombie.gameObject.transform.position, zombie.bruxinha.transform.position) > 12f)
         {
-            Debug.Log("Teste");
             zombie.SwitchState(zombie._workState);
+
         }
 
         if (doattack)

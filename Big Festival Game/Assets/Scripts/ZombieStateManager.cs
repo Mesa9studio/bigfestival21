@@ -23,7 +23,7 @@ public class ZombieStateManager : MonoBehaviour
     [SerializeField] Transform _defaultPositionLook;
     public Transform DefaultPositionLook { get { return _defaultPositionLook; } set { _defaultPositionLook = value; }}
 
-    [HideInInspector]public GameObject bruxinha;
+    public GameObject bruxinha;
 
     public NavMeshAgent _agent;
     // Start is called before the first frame update

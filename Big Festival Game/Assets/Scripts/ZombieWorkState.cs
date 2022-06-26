@@ -19,9 +19,10 @@ public class ZombieWorkState : ZombieBaseState
         {
             zombie.zombieAnimator.Play("Idle");
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Vector3.Distance(zombie.gameObject.transform.position, zombie.bruxinha.transform.position) < 5f)
         {
             zombie.SwitchState(zombie._walkState);
+
         }
     }
 
