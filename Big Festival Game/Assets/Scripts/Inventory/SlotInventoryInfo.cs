@@ -32,7 +32,9 @@ public class SlotInventoryInfo : MonoBehaviour, IPointerDownHandler,IPointerUpHa
         {
             if (itemClick.tipodeItem == ItemScriptable.TipoDeItens.Combustivel)
             {
-                //inventory.GetComponent<Bruxa>().flyState
+                inventory.GetComponent<Bruxa>().flyState.flyFuel ++;
+                itemClick.amount--;
+                inventory.ShowInventory();
             }
             else
             {
