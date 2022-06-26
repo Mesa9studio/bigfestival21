@@ -51,7 +51,6 @@ public class Inventory : MonoBehaviour
             else
             {
                 itensUI[itemOrderUI.UIPosition].sprite = spriteDefault;
-
                 itensAmount[itemOrderUI.UIPosition].text = "";
             }
         }
