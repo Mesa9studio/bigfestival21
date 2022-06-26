@@ -73,12 +73,9 @@ public class Bruxa : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Enter collision");
         currentState.OnCollisionEnter(this,collision);
         if(collision.gameObject.tag == "Faca" || collision.gameObject.tag == "Abobora")
         {
-            Debug.Log(collision.gameObject);
-            Debug.Log(collision.gameObject.GetComponent<Item>());
             InventoryWitch.CollectItem(collision.gameObject.GetComponentInParent<Item>().itemInfo);
             Destroy(collision.gameObject.transform.parent.gameObject);
         }
@@ -88,7 +85,6 @@ public class Bruxa : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log("Enter collision");
         currentState.OnCollisionEnter(this,collision);
     }
 

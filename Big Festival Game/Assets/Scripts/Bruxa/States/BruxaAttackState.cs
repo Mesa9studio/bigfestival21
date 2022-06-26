@@ -30,7 +30,6 @@ public class BruxaAttackState : BruxaBaseState
     // verifica quando o colisor entrou
     public override void OnCollisionEnter(Bruxa bruxa, Collision collision)
     {
-        Debug.Log($"O colisor de {GetStateName()} entrou");
     }
 
 

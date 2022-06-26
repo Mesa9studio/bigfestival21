@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour
     //public List<BruxinhaItens> craft;
     public List<bool> frameClicked;
     //public List<bool> frameCraftClicked;
+    public ItemScriptable combustivel;
     private void Start()
     {
         inventoryUI = GameObject.Find("Inventory");
@@ -98,7 +99,10 @@ public class Inventory : MonoBehaviour
         gridLayout.cellSize = new Vector2((inventoryUIBG.rect.width / 5)-20, (inventoryUIBG.rect.width / 5)-20);
     }
 
-
+    public void AdicionarElementoCombustivel(int posUI)
+    {
+        itensChar.Add(new BruxinhaItens(ItemScriptable.TipoDeItens.Combustivel, 1, posUI, combustivel.UiSprite));
+    }
 
 }
 
