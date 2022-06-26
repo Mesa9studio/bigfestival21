@@ -12,6 +12,7 @@ public class BruxaMovementState : BruxaBaseState
     public override void EnterState(Bruxa bruxa)
     {
         Debug.Log($"Entrando no estado -> {GetStateName()}");
+        bruxa.bruxaAnimator.Play("walk");
     }
 
 
@@ -21,9 +22,14 @@ public class BruxaMovementState : BruxaBaseState
         // Debug.Log(GetStateName());
         movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        if (Input.GetKey(bruxa.flyState.flyUp))
+        if (Input.GetMouseButtonDown((int)(bruxa.flyState.flyMouseButton)))
         {
             bruxa.SwitchState(bruxa.flyState);
+        }
+
+        if(movement.magnitude == 0)
+        {
+            bruxa.SwitchState(bruxa.stoppedState);
         }
     }
 
@@ -31,17 +37,13 @@ public class BruxaMovementState : BruxaBaseState
     // FixedUpdate
     public override void FixedUpdateState(Bruxa bruxa)
     {
-       
+
 
         if(movement.magnitude != 0)
             movement /= movement.magnitude; // mantem a velocididade na diagonal igual na vertical e horizontal
 
         bruxa.myRb.MovePosition(bruxa.transform.position + movement * Time.deltaTime * movementSpeed);
-
-        if(movement.x==0 && movement.z == 0 && movement.y==0)
-        {
-            bruxa.SwitchState(bruxa.stoppedState);
-        }
+        bruxa.transform.rotation = Quaternion.LookRotation(movement);
     }
 
 

@@ -17,12 +17,13 @@ public class Bruxa : MonoBehaviour
     [Header ("Witch Data")]
     public Rigidbody                myRb;
     public int                      life                = 1;
+    public Animator                 bruxaAnimator;
     [SerializeField]private Inventory InventoryWitch;
     // Start is called before the first frame update
     void Start()
     {
         // myRb.GetComponent<Rigidbody>();
-        SwitchState(movementState);
+        SwitchState(stoppedState);
         InventoryWitch = GetComponent<Inventory>();
 
     }
@@ -82,7 +83,7 @@ public class Bruxa : MonoBehaviour
             Destroy(collision.gameObject.transform.parent.gameObject);
         }
 
-        
+
     }
 
     private void OnCollisionExit(Collision collision)

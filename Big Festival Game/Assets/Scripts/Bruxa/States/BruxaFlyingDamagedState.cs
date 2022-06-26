@@ -9,6 +9,7 @@ public class BruxaFlyingDamagedState : BruxaBaseState
     public override void EnterState(Bruxa bruxa)
     {
         Debug.Log($"Entrando no estado -> {GetStateName()}");
+        bruxa.bruxaAnimator.Play("hit fly");
     }
 
 

@@ -120,9 +120,9 @@ MonoBehaviour:
     flySpeed: 5
     flyLevelDistance: 1
     delayToChangeFlyLevel: 1
+    flyFuel: 10
     flyMaxLevel: 2
-    flyUp: 101
-    flyDown: 113
+    flyMouseButton: 1
   myRb: {fileID: 5666973379441010462}
   life: 1
   InventoryWitch: {fileID: 0}
