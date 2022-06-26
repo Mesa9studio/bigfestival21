@@ -10,7 +10,8 @@ public class ZombieWalkState : ZombieBaseState
         currentDamageTime = 0;
         zombie.transform.LookAt(zombie.bruxinha.transform.position);
         zombie._agent.SetDestination(zombie.bruxinha.transform.position);
-        zombie._agent.stoppingDistance = 2;
+        zombie._agent.stoppingDistance = 1.5f;
+        zombie.zombieAnimator.Play("Walk");
 
     }
 
@@ -24,6 +25,7 @@ public class ZombieWalkState : ZombieBaseState
         zombie.transform.LookAt(zombie.bruxinha.transform.position);
         if (Input.GetKeyDown(KeyCode.P))
         {
+            Debug.Log("Teste");
             zombie.SwitchState(zombie._workState);
         }
 
