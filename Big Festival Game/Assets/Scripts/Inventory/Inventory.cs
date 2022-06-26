@@ -11,13 +11,21 @@ public class Inventory : MonoBehaviour
     public List<BruxinhaItens> itensChar;
     public Sprite spriteDefault;
     public List<Image> itensUI;
+    //public List<Image> itensCraftUI;
     public List<TextMeshProUGUI> itensAmount;
+    //public List<TextMeshProUGUI> craftItensAmount;
+    //public List<BruxinhaItens> craft;
+    public List<bool> frameClicked;
+    //public List<bool> frameCraftClicked;
     private void Start()
     {
         inventoryUI = GameObject.Find("Inventory");
         inventoryUI.SetActive(false);
         itensAmount = inventoryUI.GetComponentsInChildren<TextMeshProUGUI>().ToList();
-
+        bool[] aux = new bool[5];
+        frameClicked = new List<bool>(aux);
+        bool[] auxCraft = new bool[3];
+        //frameCraftClicked = new List<bool>(auxCraft);
     }
     private void Update()
     {
@@ -35,16 +43,23 @@ public class Inventory : MonoBehaviour
         ResetInventory();
         foreach (var itemOrderUI in UIItensOrder)
         {
-            if (itemOrderUI.amount > 0)
+            if (itemOrderUI.amount > 0 && !frameClicked[itemOrderUI.UIPosition])
             {
                 itensUI[itemOrderUI.UIPosition].sprite = itemOrderUI.UiSprite;
                 itensAmount[itemOrderUI.UIPosition].text = ""+itemOrderUI.amount;
             }
             else
             {
+                itensUI[itemOrderUI.UIPosition].sprite = spriteDefault;
+
                 itensAmount[itemOrderUI.UIPosition].text = "";
             }
         }
+        /*for(int i =0;i< itensCraftUI.Count; i++)
+        {
+            itensCraftUI[i].sprite = craft[i].UiSprite;
+            craftItensAmount[i].text = ""+ craft[i].amount;
+        }*/
     }
     private void ResetInventory()
     {
@@ -53,6 +68,12 @@ public class Inventory : MonoBehaviour
             itensUI[i].sprite = spriteDefault;
             itensAmount[i].text = "";
         }
+
+        /*for(int i = 0; i < itensCraftUI.Count; i++)
+        {
+            itensCraftUI[i].sprite = spriteDefault;
+            craftItensAmount[i].text = "";
+        }*/
     }
     public void CollectItem(ItemScriptable item)
     {
@@ -77,6 +98,9 @@ public class Inventory : MonoBehaviour
         GridLayoutGroup gridLayout = inventoryUI.GetComponentInChildren<GridLayoutGroup>();
         gridLayout.cellSize = new Vector2((inventoryUIBG.rect.width / 5)-20, (inventoryUIBG.rect.width / 5)-20);
     }
+
+
+
 }
 
 [System.Serializable]
@@ -86,7 +110,7 @@ public class BruxinhaItens
     public int amount;
     public int UIPosition;
     public Sprite UiSprite;
-
+    
     public BruxinhaItens() { }
     public BruxinhaItens(ItemScriptable.TipoDeItens newTipodeItem,int newAmout,int newUIPosition,Sprite newUISprite)
     {

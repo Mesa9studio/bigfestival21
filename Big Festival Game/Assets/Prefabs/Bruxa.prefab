@@ -141,9 +141,33 @@ MonoBehaviour:
   inventoryUI: {fileID: 0}
   inventoryUIBG: {fileID: 0}
   itensChar: []
-  spriteDefault: {fileID: 0}
-  itensUI: []
+  spriteDefault: {fileID: 21300000, guid: db1145ce7569d2340813a1307c3aae7a, type: 3}
+  itensUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  itensCraftUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   itensAmount: []
+  craftItensAmount: []
+  craft:
+  - tipodeItem: 0
+    amount: 0
+    UIPosition: 0
+    UiSprite: {fileID: 0}
+  - tipodeItem: 0
+    amount: 0
+    UIPosition: 0
+    UiSprite: {fileID: 0}
+  - tipodeItem: 0
+    amount: 0
+    UIPosition: 0
+    UiSprite: {fileID: 0}
+  frameClicked: 
 --- !u!54 &5666973379441010462
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -158,5 +182,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
