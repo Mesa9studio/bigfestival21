@@ -2023,7 +2023,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7789034, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2136,6 +2136,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4006425578173984054, guid: 4d3a176560d2b4a4e9f7e8bbfaaca692, type: 3}
+      propertyPath: itens.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006425578173984054, guid: 4d3a176560d2b4a4e9f7e8bbfaaca692, type: 3}
+      propertyPath: itens.Array.data[1].tipo
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8731871487246326818, guid: 4d3a176560d2b4a4e9f7e8bbfaaca692, type: 3}
       propertyPath: m_Name
       value: VandinhaBlocada

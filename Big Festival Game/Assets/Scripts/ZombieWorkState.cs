@@ -26,7 +26,7 @@ public class ZombieWorkState : ZombieBaseState
             Debug.Log(zombie.name+" "+Vector3.Distance(zombie.transform.position, zombie.DefaultPositionSpawn.position));
 
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             zombie.SwitchState(zombie._walkState);
         }
