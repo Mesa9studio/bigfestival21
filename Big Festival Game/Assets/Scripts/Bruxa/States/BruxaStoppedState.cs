@@ -23,7 +23,7 @@ public class BruxaStoppedState : BruxaBaseState
             bruxa.SwitchState(bruxa.movementState);
         }
 
-        if (Input.GetMouseButtonDown((int)(bruxa.flyState.flyMouseButton)))
+        if (Input.GetMouseButtonDown((int)(bruxa.flyState.flyMouseButton)) && bruxa.flyState.flyFuel > 0)
         {
             bruxa.SwitchState(bruxa.flyState);
         }
