@@ -17,7 +17,6 @@ public class SlotInventoryInfo : MonoBehaviour, IPointerDownHandler,IPointerUpHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log(eventData.button);
         BruxinhaItens itemClick = inventory.itensChar.Find(p => p.UIPosition == position);
         if (eventData.button.ToString()== "Left")
         {
@@ -31,17 +30,43 @@ public class SlotInventoryInfo : MonoBehaviour, IPointerDownHandler,IPointerUpHa
         }
         else
         {
-           Debug.Log("Use Item");
-            BruxinhaItens knife = inventory.itensChar.Find(p => p.tipodeItem == ItemScriptable.TipoDeItens.Faca);
-            if (knife != null)
+            if (itemClick.tipodeItem == ItemScriptable.TipoDeItens.Combustivel)
             {
-                Debug.Log("has knife");
+                //inventory.GetComponent<Bruxa>().flyState
             }
             else
             {
-                Debug.Log("no has knife");
-
+                BruxinhaItens knife = inventory.itensChar.Find(p => p.tipodeItem == ItemScriptable.TipoDeItens.Faca);
+                BruxinhaItens abob = inventory.itensChar.Find(p => p.tipodeItem == ItemScriptable.TipoDeItens.Abobora);
+                if (knife != null && abob.amount > 0)
+                {
+                    BruxinhaItens comb = inventory.itensChar.Find(p => p.tipodeItem == ItemScriptable.TipoDeItens.Combustivel);
+                    Debug.Log(comb);
+                    if (comb != null)
+                    {
+                        comb.amount++;
+                        abob.amount--;
+                        inventory.ShowInventory();
+                    }
+                    else
+                    {
+                        int posUICombustivel = 0;
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (inventory.itensChar.Find(p => p.UIPosition == i) == null)
+                            {
+                                posUICombustivel = i;
+                                i = 5;
+                            }
+                        }
+                        Debug.Log(posUICombustivel);
+                        inventory.AdicionarElementoCombustivel(posUICombustivel);
+                        abob.amount--;
+                        inventory.ShowInventory();
+                    }
+                }
             }
+            
         }
 
 
