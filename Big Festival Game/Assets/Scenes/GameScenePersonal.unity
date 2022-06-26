@@ -14049,6 +14049,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5823894720792846614, guid: 7615b113db04cc04ea5165a6ebf62594, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.021698
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823894720792846614, guid: 7615b113db04cc04ea5165a6ebf62594, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.1138916
+      objectReference: {fileID: 0}
     - target: {fileID: 5823894720972749302, guid: 7615b113db04cc04ea5165a6ebf62594, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -38562,7 +38570,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1137158071191995507, guid: 32a6eb2a700e1054b8d252e26b579013, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1137158071191995507, guid: 32a6eb2a700e1054b8d252e26b579013, type: 3}
       propertyPath: m_LocalPosition.x
@@ -38677,7 +38685,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7789375, y: 1}
+    m_SensorSize: {x: 1.7781692, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
