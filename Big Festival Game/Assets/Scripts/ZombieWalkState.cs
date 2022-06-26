@@ -22,7 +22,7 @@ public class ZombieWalkState : ZombieBaseState
     {
         zombie._agent.SetDestination(zombie.bruxinha.transform.position);
         zombie.transform.LookAt(zombie.bruxinha.transform.position);
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             zombie.SwitchState(zombie._workState);
         }

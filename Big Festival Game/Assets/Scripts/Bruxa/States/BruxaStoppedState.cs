@@ -16,6 +16,10 @@ public class BruxaStoppedState : BruxaBaseState
     public override void UpdateState(Bruxa bruxa)
     {
         // Debug.Log(GetStateName());
+        if(Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.D))
+        {
+            bruxa.SwitchState(bruxa.movementState);
+        }
     }
 
 

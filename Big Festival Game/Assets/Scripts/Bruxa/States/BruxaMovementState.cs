@@ -6,6 +6,7 @@ using System.Collections;
 public class BruxaMovementState : BruxaBaseState
 {
     public float movementSpeed;
+    public Vector3 movement;
 
     // Start
     public override void EnterState(Bruxa bruxa)
@@ -18,6 +19,7 @@ public class BruxaMovementState : BruxaBaseState
     public override void UpdateState(Bruxa bruxa)
     {
         // Debug.Log(GetStateName());
+        movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         if (Input.GetKey(bruxa.flyState.flyUp))
         {
@@ -29,12 +31,17 @@ public class BruxaMovementState : BruxaBaseState
     // FixedUpdate
     public override void FixedUpdateState(Bruxa bruxa)
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0,Input.GetAxis("Vertical"));
+       
 
         if(movement.magnitude != 0)
             movement /= movement.magnitude; // mantem a velocididade na diagonal igual na vertical e horizontal
 
         bruxa.myRb.MovePosition(bruxa.transform.position + movement * Time.deltaTime * movementSpeed);
+
+        if(movement.x==0 && movement.z == 0 && movement.y==0)
+        {
+            bruxa.SwitchState(bruxa.stoppedState);
+        }
     }
 
 
@@ -42,8 +49,7 @@ public class BruxaMovementState : BruxaBaseState
     public override void OnCollisionEnter(Bruxa bruxa, Collision collision)
     {
         Debug.Log($"O colisor de {GetStateName()} entrou");
-        if(collision.gameObject.tag == "Inimigo")
-            bruxa.TakeDamage();
+
     }
 
 
