@@ -31,13 +31,13 @@ public class BruxaFlyState : BruxaBaseState
     {
         // Debug.Log(GetStateName());
         ChangeFlyingLevel(bruxa);
-        MovementWhileFly(bruxa);
     }
 
 
     // FixedUpdate
     public override void FixedUpdateState(Bruxa bruxa)
     {
+        MovementWhileFly(bruxa);
 
     }
 
