@@ -107,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8731871487246326819}
   - component: {fileID: 1131514672}
+  - component: {fileID: 4006425578173984054}
   m_Layer: 0
   m_Name: VandinhaBlcada
   m_TagString: Player
@@ -144,5 +145,29 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 32
   m_CollisionDetection: 0
+--- !u!114 &4006425578173984054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8731871487246326818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a832ff1365faa443a64bfb8a5091da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStateName: 
+  movementState:
+    movementSpeed: 4
+  flyState:
+    flySpeed: 6
+    flyLevelDistance: 2
+    delayToChangeFlyLevel: 0.5
+    flyMaxLevel: 2
+    flyUp: 101
+    flyDown: 113
+  myRb: {fileID: 1131514672}
+  life: 1
