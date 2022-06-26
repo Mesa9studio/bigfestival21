@@ -8,7 +8,6 @@ public class SlotInventoryInfo : MonoBehaviour, IPointerDownHandler,IPointerUpHa
     private Inventory inventory;
     [SerializeField]private int position;
     [SerializeField] private MouseInfo _mInfo;
-    [SerializeField] private Sprite defaultSprite;
     // Start is called before the first frame update
     void Start()
     {
