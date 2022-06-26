@@ -15,6 +15,8 @@ public class BruxaFlyState : BruxaBaseState
 
     public int   flyMaxLevel=2;
 
+    public bool flying=false;
+
     public MouseButton flyMouseButton;
 
     int currentFlyingLevel=0;
@@ -34,8 +36,10 @@ public class BruxaFlyState : BruxaBaseState
     // Update
     public override void UpdateState(Bruxa bruxa)
     {
-        // Debug.Log(GetStateName());
+        Debug.Log("AQUI: "+flying);
+
         ChangeFlyingLevel(bruxa);
+        UpdateFuel();
     }
 
 
@@ -89,17 +93,27 @@ public class BruxaFlyState : BruxaBaseState
         // bruxa.transform.position = new Vector3(bruxa.transform.position.x, currentY, bruxa.transform.position.z);
     }
 
+    void UpdateFuel()
+    {
+        if(!flying) return;
+
+        flyFuel -= Time.deltaTime;
+    }
+
     void ChangeFlyingLevel(Bruxa bruxa)
     {
         if(switchingFlyLevel) return;
 
-        if (Input.GetMouseButton((int)(flyMouseButton)))
+        if (Input.GetMouseButton((int)(flyMouseButton)) && flyFuel > 0)
         {
+            flying = true;
+            Debug.Log("AAAAAAAAA");
             if(currentFlyingLevel >= flyMaxLevel) return;
             bruxa.StartCoroutine(SwitchFlyLevel(bruxa));
         }
         else
         {
+            flying = false;
             if(currentFlyingLevel <= 0) return;
             bruxa.StartCoroutine(SwitchFlyLevel(bruxa, -1));
         }

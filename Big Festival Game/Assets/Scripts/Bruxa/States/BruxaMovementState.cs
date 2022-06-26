@@ -22,7 +22,7 @@ public class BruxaMovementState : BruxaBaseState
         // Debug.Log(GetStateName());
         movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        if (Input.GetMouseButtonDown((int)(bruxa.flyState.flyMouseButton)))
+        if (Input.GetMouseButtonDown((int)(bruxa.flyState.flyMouseButton)) && bruxa.flyState.flyFuel > 0)
         {
             bruxa.SwitchState(bruxa.flyState);
         }
