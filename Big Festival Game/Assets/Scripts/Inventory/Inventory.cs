@@ -11,12 +11,12 @@ public class Inventory : MonoBehaviour
     public List<BruxinhaItens> itensChar;
     public Sprite spriteDefault;
     public List<Image> itensUI;
-    public List<Image> itensCraftUI;
+    //public List<Image> itensCraftUI;
     public List<TextMeshProUGUI> itensAmount;
-    public List<TextMeshProUGUI> craftItensAmount;
-    public List<BruxinhaItens> craft;
+    //public List<TextMeshProUGUI> craftItensAmount;
+    //public List<BruxinhaItens> craft;
     public List<bool> frameClicked;
-    public List<bool> frameCraftClicked;
+    //public List<bool> frameCraftClicked;
     private void Start()
     {
         inventoryUI = GameObject.Find("Inventory");
@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
         bool[] aux = new bool[5];
         frameClicked = new List<bool>(aux);
         bool[] auxCraft = new bool[3];
-        frameCraftClicked = new List<bool>(auxCraft);
+        //frameCraftClicked = new List<bool>(auxCraft);
     }
     private void Update()
     {
@@ -55,11 +55,11 @@ public class Inventory : MonoBehaviour
                 itensAmount[itemOrderUI.UIPosition].text = "";
             }
         }
-        for(int i =0;i< itensCraftUI.Count; i++)
+        /*for(int i =0;i< itensCraftUI.Count; i++)
         {
             itensCraftUI[i].sprite = craft[i].UiSprite;
             craftItensAmount[i].text = ""+ craft[i].amount;
-        }
+        }*/
     }
     private void ResetInventory()
     {
@@ -69,11 +69,11 @@ public class Inventory : MonoBehaviour
             itensAmount[i].text = "";
         }
 
-        for(int i = 0; i < itensCraftUI.Count; i++)
+        /*for(int i = 0; i < itensCraftUI.Count; i++)
         {
             itensCraftUI[i].sprite = spriteDefault;
             craftItensAmount[i].text = "";
-        }
+        }*/
     }
     public void CollectItem(ItemScriptable item)
     {
