@@ -7,7 +7,6 @@ public class ZombieWorkState : ZombieBaseState
         zombie.transform.LookAt(zombie.DefaultPositionLook);
         zombie._agent.SetDestination(zombie.DefaultPositionSpawn.position);
         zombie._agent.stoppingDistance = 0;
-
     }
 
     public override void OnCollisionEnter(ZombieStateManager zombie)
@@ -18,13 +17,7 @@ public class ZombieWorkState : ZombieBaseState
     {
         if (Vector3.Distance(zombie.transform.position, zombie.DefaultPositionSpawn.position) <= zombie._agent.stoppingDistance+1.5f)
         {
-            Debug.Log(zombie.transform.name+"Executar animacao ");
-        }
-        else
-        {
-            Debug.Log(zombie.transform.name + "Nao Executar animação ainda");
-            Debug.Log(zombie.name+" "+Vector3.Distance(zombie.transform.position, zombie.DefaultPositionSpawn.position));
-
+            zombie.zombieAnimator.Play("Idle");
         }
         if (Input.GetKeyDown(KeyCode.P))
         {

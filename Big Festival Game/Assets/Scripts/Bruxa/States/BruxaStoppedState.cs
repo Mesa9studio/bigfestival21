@@ -9,6 +9,8 @@ public class BruxaStoppedState : BruxaBaseState
     public override void EnterState(Bruxa bruxa)
     {
         Debug.Log($"Entrando no estado -> {GetStateName()}");
+        bruxa.bruxaAnimator.Play("idle");
+            // Debug.Log(GetStateName());
     }
 
 
@@ -19,6 +21,11 @@ public class BruxaStoppedState : BruxaBaseState
         if(Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.D))
         {
             bruxa.SwitchState(bruxa.movementState);
+        }
+
+        if (Input.GetMouseButtonDown((int)(bruxa.flyState.flyMouseButton)) && bruxa.flyState.flyFuel > 0)
+        {
+            bruxa.SwitchState(bruxa.flyState);
         }
     }
 

@@ -15,6 +15,9 @@ public class ZombieStateManager : MonoBehaviour
     [SerializeField] string _currentStateName;
     [SerializeField] string _auxStateName;
     [SerializeField] Transform _defaultPositionSpawn;
+    [SerializeField] public Animator zombieAnimator;
+    public GameObject AttackPoint;
+
     public Transform DefaultPositionSpawn { get { return _defaultPositionSpawn; } set { _defaultPositionSpawn = value; } }
 
     [SerializeField] Transform _defaultPositionLook;

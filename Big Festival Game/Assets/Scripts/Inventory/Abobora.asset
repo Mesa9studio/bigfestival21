@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a885519bbd7ae1a4f92582d2c0ea275f, type: 3}
+  m_Name: Abobora
+  m_EditorClassIdentifier: 
+  tipo: 1
+  UiSprite: {fileID: 21300000, guid: c0fa411ebc408234cbd260cd65a9ebc1, type: 3}

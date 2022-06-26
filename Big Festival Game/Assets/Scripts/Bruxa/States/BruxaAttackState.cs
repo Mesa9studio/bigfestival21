@@ -9,6 +9,7 @@ public class BruxaAttackState : BruxaBaseState
     public override void EnterState(Bruxa bruxa)
     {
         Debug.Log($"Entrando no estado -> {GetStateName()}");
+        bruxa.bruxaAnimator.Play("attack");
     }
 
 
@@ -29,7 +30,6 @@ public class BruxaAttackState : BruxaBaseState
     // verifica quando o colisor entrou
     public override void OnCollisionEnter(Bruxa bruxa, Collision collision)
     {
-        Debug.Log($"O colisor de {GetStateName()} entrou");
     }
 
 
