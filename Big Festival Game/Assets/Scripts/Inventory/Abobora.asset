@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Abobora
   m_EditorClassIdentifier: 
   tipo: 1
-  UiSprite: {fileID: 21300000, guid: 7d7f590925f54e5498b1a8c4a58d1386, type: 3}
+  UiSprite: {fileID: 21300000, guid: c0fa411ebc408234cbd260cd65a9ebc1, type: 3}

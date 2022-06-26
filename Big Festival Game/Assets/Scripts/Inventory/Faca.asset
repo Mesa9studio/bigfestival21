@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Faca
   m_EditorClassIdentifier: 
   tipo: 0
-  UiSprite: {fileID: 21300000, guid: a5f18c2f7201f81469af11d3c1a569cb, type: 3}
+  UiSprite: {fileID: 21300000, guid: 33fcbc15649382b40b92e3dc0c279951, type: 3}
