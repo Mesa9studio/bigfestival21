@@ -2,16 +2,20 @@ using System;
 using UnityEngine;
 using System.Collections;
 
+public enum MouseButton{Left=0, Right=1}
+
 [Serializable]
 public class BruxaFlyState : BruxaBaseState
 {
+
     public float flySpeed,
                  flyLevelDistance=1,
-                 delayToChangeFlyLevel=2;
+                 delayToChangeFlyLevel=2,
+                 flyFuel=10;
 
     public int   flyMaxLevel=2;
 
-    public KeyCode flyUp, flyDown;
+    public MouseButton flyMouseButton;
 
     int currentFlyingLevel=0;
     float currentY;
@@ -21,6 +25,7 @@ public class BruxaFlyState : BruxaBaseState
     public override void EnterState(Bruxa bruxa)
     {
         Debug.Log($"Entrando no estado -> {GetStateName()}");
+        bruxa.bruxaAnimator.Play("fly");
         currentY = bruxa.transform.position.y;
         bruxa.StartCoroutine(SwitchFlyLevel(bruxa));
     }
@@ -80,6 +85,7 @@ public class BruxaFlyState : BruxaBaseState
 
         // bruxa.myRb.MovePosition(bruxa.transform.position + movement * Time.deltaTime * flySpeed);
         bruxa.transform.position += movement * Time.deltaTime * flySpeed;
+        bruxa.transform.rotation = Quaternion.LookRotation(movement);
         // bruxa.transform.position = new Vector3(bruxa.transform.position.x, currentY, bruxa.transform.position.z);
     }
 
@@ -87,17 +93,28 @@ public class BruxaFlyState : BruxaBaseState
     {
         if(switchingFlyLevel) return;
 
-        if (Input.GetKey(flyUp))
+        if (Input.GetMouseButton((int)(flyMouseButton)))
         {
             if(currentFlyingLevel >= flyMaxLevel) return;
             bruxa.StartCoroutine(SwitchFlyLevel(bruxa));
-
         }
-        else if (Input.GetKey(flyDown))
+        else
         {
             if(currentFlyingLevel <= 0) return;
             bruxa.StartCoroutine(SwitchFlyLevel(bruxa, -1));
         }
+
+        // if (Input.GetKey(flyUp))
+        // {
+        //     if(currentFlyingLevel >= flyMaxLevel) return;
+        //     bruxa.StartCoroutine(SwitchFlyLevel(bruxa));
+        //
+        // }
+        // else if (Input.GetKey(flyDown))
+        // {
+        //     if(currentFlyingLevel <= 0) return;
+        //     bruxa.StartCoroutine(SwitchFlyLevel(bruxa, -1));
+        // }
     }
 
 
