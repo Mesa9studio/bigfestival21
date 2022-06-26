@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6050075747321462982}
   - component: {fileID: 6050075747321462983}
   - component: {fileID: 6050075747321462980}
+  - component: {fileID: 5090989295011461675}
   m_Layer: 0
   m_Name: Chamine_Smoke
   m_TagString: Untagged
@@ -4813,6 +4814,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!65 &5090989295011461675
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6050075747321462981}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2805142, y: 2.9300628, z: 12.1636}
+  m_Center: {x: 0.07376285, y: -0.15088771, z: -3.2078397}
 --- !u!1001 &6050075747586407118
 PrefabInstance:
   m_ObjectHideFlags: 0
