@@ -97,7 +97,7 @@ public class BruxaFlyState : BruxaBaseState
     {
         if(!flying) return;
 
-        flyFuel -= Time.deltaTime;
+        // flyFuel -= Time.deltaTime;
     }
 
     void ChangeFlyingLevel(Bruxa bruxa)
