@@ -18,17 +18,11 @@ public class ZombieWorkState : ZombieBaseState
     {
         if (Vector3.Distance(zombie.transform.position, zombie.DefaultPositionSpawn.position) <= zombie._agent.stoppingDistance+1.5f)
         {
-            Debug.Log(zombie.transform.name+"Executar animacao ");
-        }
-        else
-        {
-            Debug.Log(zombie.transform.name + "Nao Executar animação ainda");
-            Debug.Log(zombie.name+" "+Vector3.Distance(zombie.transform.position, zombie.DefaultPositionSpawn.position));
-
+            //Debug.Log(zombie.transform.name+"Executar animacao ");
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            zombie.SwitchState(zombie._walkState);
+            //zombie.SwitchState(zombie._walkState);
         }
     }
 
