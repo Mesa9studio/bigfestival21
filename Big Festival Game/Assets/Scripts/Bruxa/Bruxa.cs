@@ -45,8 +45,11 @@ public class Bruxa : MonoBehaviour
     }
 
 
-    public void SwitchState(BruxaBaseState state)
+    public void SwitchState(BruxaBaseState state, bool Switch = true)
     {
+        if(!Switch)
+            return;
+
         currentState = state;
         currentState.EnterState(this);
         currentStateName = state.GetStateName();
@@ -96,6 +99,16 @@ public class Bruxa : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         currentState.OnCollisionEnter(this,collision);
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        currentState.OnTriggerEnter(this,collider);
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        currentState.OnTriggerExit(this,collider);
     }
 
 

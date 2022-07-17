@@ -5,6 +5,8 @@ using System.Collections;
 [Serializable]
 public class BruxaAttackState : BruxaBaseState
 {
+    public float damageValue=1f;
+
     // Start
     public override void EnterState(Bruxa bruxa)
     {
@@ -37,6 +39,24 @@ public class BruxaAttackState : BruxaBaseState
     public override void OnCollisionExit(Bruxa bruxa, Collision collision)
     {
         Debug.Log($"O colisor de {GetStateName()} saiu");
+    }
+
+
+    public override void OnTriggerEnter(Bruxa bruxa, Collider collider)
+    {
+        
+    }
+
+
+    public override void OnTriggerExit(Bruxa bruxa, Collider collider)
+    {
+
+    }
+
+
+    public void FinishAttack()
+    {
+
     }
 
 
