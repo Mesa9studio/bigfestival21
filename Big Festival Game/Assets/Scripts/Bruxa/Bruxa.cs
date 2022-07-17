@@ -14,6 +14,7 @@ public class Bruxa : MonoBehaviour
     public BruxaFlyState            flyState            = new BruxaFlyState();
     public BruxaDamagedState        damagedState        = new BruxaDamagedState();
     public BruxaFlyingDamagedState  flyingDamagedState  = new BruxaFlyingDamagedState();
+    public BruxaDeadState           deadState           = new BruxaDeadState();
     [Header ("Witch Data")]
     public Rigidbody                myRb;
     public int                      life                = 1;
@@ -56,7 +57,13 @@ public class Bruxa : MonoBehaviour
     {
         if (currentState != null)
             currentState.UpdateState(this);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage();
+        }
     }
+
 
     // atualiza o fixedUpdate do estado atual
     void FixedUpdateState()
@@ -68,7 +75,10 @@ public class Bruxa : MonoBehaviour
     public void TakeDamage()
     {
         life--;
-        currentState.TakeDamage(this);
+        if (life > 0)
+            currentState.TakeDamage(this);
+        else
+            SwitchState(deadState);
     }
 
     private void OnCollisionEnter(Collision collision)

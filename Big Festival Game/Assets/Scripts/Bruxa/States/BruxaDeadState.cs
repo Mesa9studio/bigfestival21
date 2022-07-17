@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 [Serializable]
 public class BruxaDeadState : BruxaBaseState
 {
@@ -10,8 +11,14 @@ public class BruxaDeadState : BruxaBaseState
     {
         Debug.Log($"Entrando no estado -> {GetStateName()}");
         bruxa.bruxaAnimator.Play("dead");
+        bruxa.StartCoroutine(ChangeGameOverScene());
     }
 
+    IEnumerator ChangeGameOverScene()
+    {
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene("Game DeadScene");
+    }
 
     // Update
     public override void UpdateState(Bruxa bruxa)
