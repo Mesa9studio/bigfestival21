@@ -54,11 +54,6 @@ public class BruxaAttackState : BruxaBaseState
     }
 
 
-    public void FinishAttack()
-    {
-
-    }
-
 
     // retorna o nome do estado que no caso é o nome desse script
     public override string GetStateName()
