@@ -121,7 +121,10 @@ public class Bruxa : MonoBehaviour
             InventoryWitch.CollectItem(collision.gameObject.GetComponentInParent<Item>().itemInfo);
             Destroy(collision.gameObject.transform.parent.gameObject);
         }
-
+        else if(collision.gameObject.tag == "Rua")
+        {
+            SwitchState(deadState);
+        }
 
     }
 
