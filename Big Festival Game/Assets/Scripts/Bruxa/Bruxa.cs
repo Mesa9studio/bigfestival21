@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// public enum BruxaState{
+//     Stop,
+//     Move,
+//     Attack,
+//     Fly,
+//     Damage,
+//     FlyDamage,
+//     Dead
+// }
+
 public class Bruxa : MonoBehaviour
 {
 
@@ -20,9 +30,22 @@ public class Bruxa : MonoBehaviour
     public int                      life                = 1;
     public Animator                 bruxaAnimator;
     [SerializeField]private Inventory InventoryWitch;
+    
+    private Dictionary<string, BruxaBaseState> statesFromString = new Dictionary<string, BruxaBaseState>();
     // Start is called before the first frame update
     void Start()
     {
+        // fica fácil converter a partir de uma string
+        // do que ficar usando if/switch para verificar cada um
+        statesFromString.Add("Stop", stoppedState);
+        statesFromString.Add("Move", movementState);
+        statesFromString.Add("Attack", attackState);
+        statesFromString.Add("Fly", flyState);
+        statesFromString.Add("Damage", damagedState);
+        statesFromString.Add("FlyDamage", flyingDamagedState);
+        statesFromString.Add("Dead", deadState);
+
+
         // myRb.GetComponent<Rigidbody>();
         SwitchState(stoppedState);
         InventoryWitch = GetComponent<Inventory>();
@@ -44,9 +67,16 @@ public class Bruxa : MonoBehaviour
         FixedUpdateState();
     }
 
-
-    public void SwitchState(BruxaBaseState state)
+    public void SwitchStateWithEnum(States.Bruxa state)
     {
+        SwitchState(statesFromString[state.ToString()]);
+    }
+
+    public void SwitchState(BruxaBaseState state, bool Switch = true)
+    {
+        if(!Switch)
+            return;
+
         currentState = state;
         currentState.EnterState(this);
         currentStateName = state.GetStateName();
@@ -96,6 +126,16 @@ public class Bruxa : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         currentState.OnCollisionEnter(this,collision);
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        currentState.OnTriggerEnter(this,collider);
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        currentState.OnTriggerExit(this,collider);
     }
 
 

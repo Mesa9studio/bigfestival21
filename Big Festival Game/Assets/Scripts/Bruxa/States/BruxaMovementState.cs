@@ -19,18 +19,11 @@ public class BruxaMovementState : BruxaBaseState
     // Update
     public override void UpdateState(Bruxa bruxa)
     {
-        // Debug.Log(GetStateName());
         movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        if (Input.GetMouseButtonDown((int)(bruxa.flyState.flyMouseButton)) && bruxa.flyState.flyFuel > 0)
-        {
-            bruxa.SwitchState(bruxa.flyState);
-        }
-
-        if(movement.magnitude == 0)
-        {
-            bruxa.SwitchState(bruxa.stoppedState);
-        }
+        bruxa.SwitchState(bruxa.attackState, Input.GetAxis("Ataque") != 0);
+        bruxa.SwitchState(bruxa.flyState, Input.GetAxis("Fly") > 0 && bruxa.flyState.flyFuel > 0);
+        bruxa.SwitchState(bruxa.stoppedState, movement.magnitude == 0);
     }
 
 
@@ -59,6 +52,18 @@ public class BruxaMovementState : BruxaBaseState
     public override void OnCollisionExit(Bruxa bruxa, Collision collision)
     {
         Debug.Log($"O colisor de {GetStateName()} saiu");
+    }
+
+
+    public override void OnTriggerEnter(Bruxa bruxa, Collider collider)
+    {
+        
+    }
+
+
+    public override void OnTriggerExit(Bruxa bruxa, Collider collider)
+    {
+
     }
 
 

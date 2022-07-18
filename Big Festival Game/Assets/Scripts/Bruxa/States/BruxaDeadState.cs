@@ -48,6 +48,18 @@ public class BruxaDeadState : BruxaBaseState
     }
 
 
+    public override void OnTriggerEnter(Bruxa bruxa, Collider collider)
+    {
+        
+    }
+
+
+    public override void OnTriggerExit(Bruxa bruxa, Collider collider)
+    {
+
+    }
+
+
     // retorna o nome do estado que no caso é o nome desse script
     public override string GetStateName()
     {

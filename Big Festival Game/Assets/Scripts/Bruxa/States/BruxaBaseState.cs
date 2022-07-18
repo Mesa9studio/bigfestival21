@@ -14,6 +14,10 @@ public abstract class BruxaBaseState
 
     public abstract void OnCollisionExit(Bruxa bruxa, Collision collision);
 
+    public abstract void OnTriggerEnter(Bruxa bruxa, Collider collider);
+
+    public abstract void OnTriggerExit(Bruxa bruxa, Collider collider);
+
     public abstract string GetStateName();
 
     public abstract void TakeDamage(Bruxa bruxa);
