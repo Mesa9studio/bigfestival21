@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System;
 using UnityEngine;
 using System.Collections;
@@ -32,25 +33,26 @@ public class BruxaAttackState : BruxaBaseState
     // verifica quando o colisor entrou
     public override void OnCollisionEnter(Bruxa bruxa, Collision collision)
     {
+        // Debug.Log($"Name: {collision.gameObject.name}");
     }
 
 
     // verifica quando o colisor saiu
     public override void OnCollisionExit(Bruxa bruxa, Collision collision)
     {
-        Debug.Log($"O colisor de {GetStateName()} saiu");
+        // Debug.Log($"O colisor de {GetStateName()} saiu");
     }
 
 
     public override void OnTriggerEnter(Bruxa bruxa, Collider collider)
     {
-        
+        Debug.Log($"Eu acertei o colisor de -> {collider.gameObject.name}");
     }
 
 
     public override void OnTriggerExit(Bruxa bruxa, Collider collider)
     {
-
+        Debug.Log($"Eu acertei e sai do colisor de -> {collider.gameObject.name}");
     }
 
 

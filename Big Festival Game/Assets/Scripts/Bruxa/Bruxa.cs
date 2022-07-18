@@ -1,3 +1,4 @@
+using System.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,6 +50,7 @@ public class Bruxa : MonoBehaviour
         // myRb.GetComponent<Rigidbody>();
         SwitchState(stoppedState);
         InventoryWitch = GetComponent<Inventory>();
+        
 
     }
 
@@ -130,6 +132,7 @@ public class Bruxa : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
+        // Debug.Log($"Name: {collider.gameObject.name}");
         currentState.OnTriggerEnter(this,collider);
     }
 
