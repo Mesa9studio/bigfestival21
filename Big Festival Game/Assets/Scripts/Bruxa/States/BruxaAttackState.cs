@@ -1,3 +1,4 @@
+using System.Diagnostics.Tracing;
 using System.Collections.ObjectModel;
 using System;
 using UnityEngine;
@@ -47,6 +48,16 @@ public class BruxaAttackState : BruxaBaseState
     public override void OnTriggerEnter(Bruxa bruxa, Collider collider)
     {
         Debug.Log($"Eu acertei o colisor de -> {collider.gameObject.name}");
+        if(collider.tag == Tags.Zombie)
+        {
+            Debug.Log("Zumbi recebeu dano e agora deve ficar tonto");
+            //TODO
+        }
+        if(collider.tag == Tags.NecromanticShoot)
+        {
+            Debug.Log("Acertei a bola de fogo do necromance e agora ela deve voltar para ele");
+            //TODO
+        }
     }
 
 
