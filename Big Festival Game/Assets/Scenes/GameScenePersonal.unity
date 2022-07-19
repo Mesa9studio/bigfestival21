@@ -3273,12 +3273,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 373743930}
     - target: {fileID: 3018608162450919613, guid: f0a973ff548965340b315441e44889c8, type: 3}
+      propertyPath: flyState.flyFuel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018608162450919613, guid: f0a973ff548965340b315441e44889c8, type: 3}
       propertyPath: flyState.flySpeed
-      value: 600
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 3018608162450919613, guid: f0a973ff548965340b315441e44889c8, type: 3}
       propertyPath: flyState.infiniteFuel
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3018608162450919613, guid: f0a973ff548965340b315441e44889c8, type: 3}
       propertyPath: flyState.building.m_Bits
