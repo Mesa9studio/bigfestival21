@@ -9,6 +9,7 @@ TagManager:
   - Abobora
   - Zombie
   - NecromanticShoot
+  - Street
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Building
   - 
   - 
   - 

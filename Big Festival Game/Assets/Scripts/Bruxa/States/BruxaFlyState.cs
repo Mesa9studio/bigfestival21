@@ -13,6 +13,8 @@ public class BruxaFlyState : BruxaBaseState
                  delayToChangeFlyLevel=2,
                  flyFuel=10;
 
+    public bool infiniteFuel;
+
     public int   flyMaxLevel=2;
 
     public bool flying=false;
@@ -23,22 +25,29 @@ public class BruxaFlyState : BruxaBaseState
     float currentY;
     bool switchingFlyLevel = false;
 
+    public LayerMask building;
+
+    private Bruxa bx;
+
     // Start
     public override void EnterState(Bruxa bruxa)
     {
         Debug.Log($"Entrando no estado -> {GetStateName()}");
+        bx = bruxa;
+        bruxa.myRb.useGravity = false;
+        flying = true;
         bruxa.bruxaAnimator.Play("fly");
         currentY = bruxa.transform.position.y;
-        bruxa.StartCoroutine(SwitchFlyLevel(bruxa));
+        // bruxa.StartCoroutine(SwitchFlyLevel(bruxa));
     }
 
 
     // Update
     public override void UpdateState(Bruxa bruxa)
     {
-        Debug.Log("AQUI: "+flying);
+        // Debug.Log("AQUI: "+flying);
 
-        ChangeFlyingLevel(bruxa);
+        // ChangeFlyingLevel(bruxa);
         UpdateFuel();
     }
 
@@ -47,7 +56,7 @@ public class BruxaFlyState : BruxaBaseState
     public override void FixedUpdateState(Bruxa bruxa)
     {
         MovementWhileFly(bruxa);
-
+        TryingLandOnTheBuilding();
     }
 
 
@@ -94,20 +103,43 @@ public class BruxaFlyState : BruxaBaseState
 
     void MovementWhileFly(Bruxa bruxa)
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0,Input.GetAxis("Vertical"));
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), GetPropulsion(), Input.GetAxis("Vertical"));
 
         if(movement.magnitude != 0)
-            movement /= movement.magnitude; // mantem a velocididade na diagonal igual na vertical e horizontal
+            movement /= movement.magnitude; // mantem a velocidade na diagonal igual na vertical e horizontal
 
-        // bruxa.myRb.MovePosition(bruxa.transform.position + movement * Time.deltaTime * flySpeed);
-        bruxa.transform.position += movement * Time.deltaTime * flySpeed;
+        // bruxa.myRb.MovePosition(Time.deltaTime * flySpeed * movement + bruxa.transform.position);
+        // bruxa.transform.position += movement * Time.deltaTime * flySpeed;
+        bx.myRb.velocity = Time.deltaTime * flySpeed * movement;
         bruxa.transform.rotation = Quaternion.LookRotation(movement);
+
+        
         // bruxa.transform.position = new Vector3(bruxa.transform.position.x, currentY, bruxa.transform.position.z);
+    }
+
+    void TryingLandOnTheBuilding()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(bx.transform.position, -Vector3.up, out hit, 2.5f, building))
+        {
+            if(GetPropulsion() >= 0)
+                return;
+
+            bx.SwitchState(bx.movementState);
+            // Debug.DrawRay(bx.transform.position, hit.distance*-Vector3.up, Color.red);
+        }
+    }
+
+    float GetPropulsion()
+    {   if(flyFuel > 0)
+            return Input.GetAxis("Fly");
+        
+        return -1;
     }
 
     void UpdateFuel()
     {
-        if(!flying) return;
+        if(!flying || infiniteFuel) return;
 
         flyFuel -= Time.deltaTime;
     }

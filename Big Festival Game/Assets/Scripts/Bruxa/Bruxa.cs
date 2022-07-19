@@ -1,4 +1,3 @@
-using System.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -78,7 +77,9 @@ public class Bruxa : MonoBehaviour
     {
         if(!Switch)
             return;
-
+        
+        myRb.useGravity = true;
+        transform.rotation = Quaternion.LookRotation(Vector3.zero);
         currentState = state;
         currentState.EnterState(this);
         currentStateName = state.GetStateName();
