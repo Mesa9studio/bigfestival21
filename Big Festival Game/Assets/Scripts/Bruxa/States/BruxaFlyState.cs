@@ -120,7 +120,7 @@ public class BruxaFlyState : BruxaBaseState
     void TryingLandOnTheBuilding()
     {
         RaycastHit hit;
-        if(Physics.Raycast(bx.transform.position, -Vector3.up, out hit, 2.5f, building))
+        if(Physics.Raycast(bx.transform.position, -Vector3.up, out hit, 2f, building))
         {
             if(GetPropulsion() >= 0)
                 return;
