@@ -51,7 +51,7 @@ public class BruxaAttackState : BruxaBaseState
         if(collider.tag == Tags.Zombie)
         {
             Debug.Log("Zumbi recebeu dano e agora deve ficar tonto");
-            //TODO
+            collider.GetComponent<ZombieStateManager>().ZombieDie = true;
         }
         if(collider.tag == Tags.NecromanticShoot)
         {
