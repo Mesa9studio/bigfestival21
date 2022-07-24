@@ -9,7 +9,6 @@ public class BruxaDeadState : BruxaBaseState
     // Start
     public override void EnterState(Bruxa bruxa)
     {
-        Debug.Log($"Entrando no estado -> {GetStateName()}");
         bruxa.bruxaAnimator.Play("dead");
         bruxa.StartCoroutine(ChangeGameOverScene());
     }

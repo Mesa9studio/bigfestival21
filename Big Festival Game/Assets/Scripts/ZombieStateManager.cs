@@ -13,7 +13,7 @@ public class ZombieStateManager : MonoBehaviour
     [SerializeField]bool _zombieDie;
     public bool ZombieDie { get { return _zombieDie; } set { _zombieDie = value; } }
     [SerializeField] string _currentStateName;
-    [SerializeField] string _auxStateName;
+    [SerializeField] protected string _auxStateName;
     [SerializeField] Transform _defaultPositionSpawn;
     [SerializeField] public Animator zombieAnimator;
     public GameObject AttackPoint;
@@ -37,12 +37,6 @@ public class ZombieStateManager : MonoBehaviour
     void Update()
     {
         _currentState.UpdateState(this);
-        if (_zombieDie && _currentStateName!= _dieState.GetCurrentState(this)) 
-        {
-            auxState = _currentState;
-            _auxStateName = auxState.GetCurrentState(this);
-            SwitchState(_dieState);
-        }
     }
 
 
@@ -52,5 +46,13 @@ public class ZombieStateManager : MonoBehaviour
         _currentState.EnterState(this);
         _currentStateName = _currentState.GetCurrentState(this);
 
+    }
+
+    public void ZombieReceiveDamage()
+    {
+        Debug.Log("Current state:" + _currentStateName);
+        auxState = _currentState;
+        _auxStateName = auxState.GetCurrentState(this);
+        SwitchState(_dieState);
     }
 }

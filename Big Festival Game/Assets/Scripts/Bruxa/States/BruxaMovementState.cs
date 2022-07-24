@@ -11,7 +11,6 @@ public class BruxaMovementState : BruxaBaseState
     // Start
     public override void EnterState(Bruxa bruxa)
     {
-        Debug.Log($"Entrando no estado -> {GetStateName()}");
         bruxa.bruxaAnimator.Play("walk");
     }
 
@@ -43,7 +42,6 @@ public class BruxaMovementState : BruxaBaseState
     // verifica quando o colisor entrou
     public override void OnCollisionEnter(Bruxa bruxa, Collision collision)
     {
-        Debug.Log($"O colisor de {GetStateName()} entrou");
 
     }
 
@@ -51,7 +49,6 @@ public class BruxaMovementState : BruxaBaseState
     // verifica quando o colisor saiu
     public override void OnCollisionExit(Bruxa bruxa, Collision collision)
     {
-        Debug.Log($"O colisor de {GetStateName()} saiu");
     }
 
 

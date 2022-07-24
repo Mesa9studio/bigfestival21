@@ -27,10 +27,10 @@ public class Bruxa : MonoBehaviour
     public BruxaDeadState           deadState           = new BruxaDeadState();
     [Header ("Witch Data")]
     public Rigidbody                myRb;
-    public int                      life                = 1;
+    public int                      currenteLife         = 4;
     public Animator                 bruxaAnimator;
     [SerializeField]private Inventory InventoryWitch;
-    
+    public GameObject AttackPoint;
     private Dictionary<string, BruxaBaseState> statesFromString = new Dictionary<string, BruxaBaseState>();
     // Start is called before the first frame update
     void Start()
@@ -79,7 +79,7 @@ public class Bruxa : MonoBehaviour
             return;
         
         myRb.useGravity = true;
-        transform.rotation = Quaternion.LookRotation(Vector3.zero);
+        //transform.rotation = Quaternion.LookRotation(Vector3.zero);
         currentState = state;
         currentState.EnterState(this);
         currentStateName = state.GetStateName();
@@ -90,11 +90,6 @@ public class Bruxa : MonoBehaviour
     {
         if (currentState != null)
             currentState.UpdateState(this);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage();
-        }
     }
 
 
@@ -107,8 +102,8 @@ public class Bruxa : MonoBehaviour
 
     public void TakeDamage()
     {
-        life--;
-        if (life > 0)
+        currenteLife--;
+        if (currenteLife > 0)
             currentState.TakeDamage(this);
         else
             SwitchState(deadState);

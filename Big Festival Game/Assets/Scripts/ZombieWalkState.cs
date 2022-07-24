@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ZombieWalkState : ZombieBaseState
 {
-    float recoilDamageTime=0.5f;
-    float currentDamageTime = 0;
-    bool doattack = false;
+    [SerializeField]float recoilDamageTime=0.5f;
+    [SerializeField]float currentDamageTime = 0;
+    [SerializeField]bool doattack = false;
     public override void EnterState(ZombieStateManager zombie)
     {
         currentDamageTime = 0;
@@ -34,15 +34,18 @@ public class ZombieWalkState : ZombieBaseState
             currentDamageTime += Time.deltaTime;
             if (currentDamageTime >= recoilDamageTime)
             {
+                zombie.SwitchState(zombie._attackState);
                 doattack = false;
             }
             return;
         }
         if (Vector3.Distance(zombie.transform.position, zombie.bruxinha.transform.position) <= zombie._agent.stoppingDistance)
         {
-            Debug.Log(zombie.transform.name + "Executar o ataque na bruxinha");
-            zombie.SwitchState(zombie._attackState);
             doattack = true;
+        }
+        else
+        {
+            doattack = false;
         }
     }
 

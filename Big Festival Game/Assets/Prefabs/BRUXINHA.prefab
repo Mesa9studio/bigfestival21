@@ -17488,7 +17488,7 @@ MonoBehaviour:
     flying: 0
     flyMouseButton: 1
   myRb: {fileID: 4950136503021165507}
-  life: 1
+  life: 0
   bruxaAnimator: {fileID: 4866579289083232485}
   InventoryWitch: {fileID: 0}
 --- !u!54 &4950136503021165507

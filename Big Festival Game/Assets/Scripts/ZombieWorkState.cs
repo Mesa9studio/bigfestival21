@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public class ZombieWorkState : ZombieBaseState
 {
     public override void EnterState(ZombieStateManager zombie)
