@@ -14,6 +14,7 @@ public class BruxaAttackState : BruxaBaseState
     {
         Debug.Log($"Entrando no estado -> {GetStateName()}");
         bruxa.bruxaAnimator.Play("attack");
+
     }
 
 
@@ -50,8 +51,11 @@ public class BruxaAttackState : BruxaBaseState
         Debug.Log($"Eu acertei o colisor de -> {collider.gameObject.name}");
         if(collider.tag == Tags.Zombie)
         {
-            Debug.Log("Zumbi recebeu dano e agora deve ficar tonto");
-            collider.GetComponent<ZombieStateManager>().ZombieDie = true;
+            if (!collider.GetComponent<ZombieStateManager>().ZombieDie)
+            {
+                Debug.Log("Zumbi recebeu dano e agora deve ficar tonto");
+                collider.GetComponent<ZombieStateManager>().ZombieReceiveDamage();
+            }
         }
         if(collider.tag == Tags.NecromanticShoot)
         {

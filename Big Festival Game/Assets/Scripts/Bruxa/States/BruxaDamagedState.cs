@@ -9,10 +9,15 @@ public class BruxaDamagedState : BruxaBaseState
     public override void EnterState(Bruxa bruxa)
     {
         Debug.Log($"Entrando no estado -> {GetStateName()}");
-        bruxa.bruxaAnimator.Play("hit walk");
+        bruxa.StartCoroutine(BruxaTakeDamage(bruxa));
     }
 
-
+    IEnumerator BruxaTakeDamage(Bruxa bruxa)
+    {
+        bruxa.bruxaAnimator.Play("hit walk");
+        yield return new WaitForSeconds(1f);
+        bruxa.SwitchState(bruxa.stoppedState);
+    }
     // Update
     public override void UpdateState(Bruxa bruxa)
     {
