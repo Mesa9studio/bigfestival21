@@ -57,7 +57,6 @@ public class Bruxa : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         UpdateState();
     }
 
@@ -79,7 +78,10 @@ public class Bruxa : MonoBehaviour
             return;
         
         myRb.useGravity = true;
-        //transform.rotation = Quaternion.LookRotation(Vector3.zero);
+        // transform.rotation = Quaternion.LookRotation(Vector3.zero);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+
+        myRb.velocity = Vector3.zero;
         currentState = state;
         currentState.EnterState(this);
         currentStateName = state.GetStateName();
@@ -163,5 +165,19 @@ public class Bruxa : MonoBehaviour
             }
         }
 
+    }
+
+
+    public void FinishAttack()
+    {
+        SwitchState(stoppedState);
+        StartCoroutine("DelayBetweenAttacks");
+    }
+
+
+    IEnumerator DelayBetweenAttacks()
+    {
+        yield return new WaitForSeconds(attackState.timeBetweenAttacks);
+        attackState.canAttack = true;
     }
 }

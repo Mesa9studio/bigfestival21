@@ -17,7 +17,7 @@ public class BruxaStoppedState : BruxaBaseState
     // Update
     public override void UpdateState(Bruxa bruxa)
     {
-        bruxa.SwitchState(bruxa.attackState,   Input.GetAxis("Ataque") != 0);
+        bruxa.SwitchState(bruxa.attackState,   Input.GetAxis("Ataque") != 0 && bruxa.attackState.canAttack);
         bruxa.SwitchState(bruxa.movementState, Input.GetAxis("Horizontal") + Input.GetAxis("Vertical") != 0);
         bruxa.SwitchState(bruxa.flyState,      Input.GetAxis("Fly") > 0 && bruxa.flyState.flyFuel > 0);
     }

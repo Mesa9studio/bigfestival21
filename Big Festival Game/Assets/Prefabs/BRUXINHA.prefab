@@ -17402,6 +17402,7 @@ GameObject:
   - component: {fileID: 1170800053640199541}
   - component: {fileID: 4866579289083232485}
   - component: {fileID: 8068280926933001213}
+  - component: {fileID: 3037801941459956067}
   m_Layer: 0
   m_Name: BRUXINHA
   m_TagString: Player
@@ -17479,18 +17480,25 @@ MonoBehaviour:
     movement: {x: 0, y: 0, z: 0}
   attackState:
     damageValue: 1
+    timeBetweenAttacks: 0.1
+    canAttack: 1
   flyState:
-    flySpeed: 15
+    flySpeed: 700
     flyLevelDistance: 2
-    delayToChangeFlyLevel: 0.5
-    flyFuel: 10
+    delayToChangeFlyLevel: 0.1
+    flyFuel: 20
+    infiniteFuel: 0
     flyMaxLevel: 2
     flying: 0
     flyMouseButton: 1
+    building:
+      serializedVersion: 2
+      m_Bits: 64
   myRb: {fileID: 4950136503021165507}
-  life: 0
+  currenteLife: 4
   bruxaAnimator: {fileID: 4866579289083232485}
   InventoryWitch: {fileID: 0}
+  AttackPoint: {fileID: 0}
 --- !u!54 &4950136503021165507
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17555,7 +17563,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -17637,6 +17645,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3037801941459956067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4495002895940140908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c2eb902e570e9408a0ce61ba70c962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4496306363544073490
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class BruxaMovementState : BruxaBaseState
     {
         movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        bruxa.SwitchState(bruxa.attackState, Input.GetAxis("Ataque") != 0);
+        bruxa.SwitchState(bruxa.attackState, Input.GetAxis("Ataque") != 0 && bruxa.attackState.canAttack);
         bruxa.SwitchState(bruxa.flyState, Input.GetAxis("Fly") > 0 && bruxa.flyState.flyFuel > 0);
         bruxa.SwitchState(bruxa.stoppedState, movement.magnitude == 0);
     }

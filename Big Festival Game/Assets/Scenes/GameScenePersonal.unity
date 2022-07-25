@@ -3272,26 +3272,6 @@ PrefabInstance:
       propertyPath: itensUI.Array.data[4]
       value: 
       objectReference: {fileID: 373743930}
-    - target: {fileID: 3018608162450919613, guid: f0a973ff548965340b315441e44889c8, type: 3}
-      propertyPath: flyState.flyFuel
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3018608162450919613, guid: f0a973ff548965340b315441e44889c8, type: 3}
-      propertyPath: flyState.flySpeed
-      value: 700
-      objectReference: {fileID: 0}
-    - target: {fileID: 3018608162450919613, guid: f0a973ff548965340b315441e44889c8, type: 3}
-      propertyPath: flyState.infiniteFuel
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3018608162450919613, guid: f0a973ff548965340b315441e44889c8, type: 3}
-      propertyPath: flyState.building.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 3018608162450919613, guid: f0a973ff548965340b315441e44889c8, type: 3}
-      propertyPath: movementState.movementSpeed
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3831056942943266262, guid: f0a973ff548965340b315441e44889c8, type: 3}
       propertyPath: m_RootOrder
       value: 2
