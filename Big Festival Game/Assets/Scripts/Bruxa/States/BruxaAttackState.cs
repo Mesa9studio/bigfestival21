@@ -1,5 +1,3 @@
-using System.Diagnostics.Tracing;
-using System.Collections.ObjectModel;
 using System;
 using UnityEngine;
 using System.Collections;
@@ -8,11 +6,15 @@ using System.Collections;
 public class BruxaAttackState : BruxaBaseState
 {
     public float damageValue=1f;
+    public float timeBetweenAttacks=0.1f;
+
+    public bool canAttack=true;
 
     // Start
     public override void EnterState(Bruxa bruxa)
     {
         Debug.Log($"Entrando no estado -> {GetStateName()}");
+        canAttack = false;
         bruxa.bruxaAnimator.Play("attack");
 
     }
@@ -83,4 +85,5 @@ public class BruxaAttackState : BruxaBaseState
     {
         bruxa.SwitchState(bruxa.movementState);
     }
+
 }

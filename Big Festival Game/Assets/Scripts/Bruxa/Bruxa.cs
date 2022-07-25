@@ -166,4 +166,18 @@ public class Bruxa : MonoBehaviour
         }
 
     }
+
+
+    public void FinishAttack()
+    {
+        SwitchState(stoppedState);
+        StartCoroutine("DelayBetweenAttacks");
+    }
+
+
+    IEnumerator DelayBetweenAttacks()
+    {
+        yield return new WaitForSeconds(attackState.timeBetweenAttacks);
+        attackState.canAttack = true;
+    }
 }
