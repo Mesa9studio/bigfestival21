@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public class ZombieAttackState : ZombieBaseState
 {
+    [SerializeField] AudioClipSystem audioCLip;
     public override void EnterState(ZombieStateManager zombie)
     {
         zombie.StartCoroutine(ZombieAttackCoroutine(zombie));
@@ -33,6 +34,7 @@ public class ZombieAttackState : ZombieBaseState
             if (objhitted.gameObject.CompareTag("Player"))
             {
                 Debug.Log("Zombie Atacou o Player");
+                zombie.PlayAudio(audioCLip.audioClip);
                 objhitted.GetComponent<Bruxa>().TakeDamage();
             }
         }
@@ -43,13 +45,14 @@ public class ZombieAttackState : ZombieBaseState
             if (!GameManager._instance.PauseActive)
             {
                 yield return new WaitForSeconds(0.1f);
-                timePrepareAttack += 0.1f;
+                timeAfterAttack += 0.1f;
             }
             else
             {
                 yield return new WaitForEndOfFrame();
             }
         }
+        Debug.Log("Zumbie vem ca");
         zombie.SwitchState(zombie._walkState);
     }
     public override void OnCollisionEnter(ZombieStateManager zombie)

@@ -4,6 +4,8 @@ using UnityEngine;
 [Serializable]
 public class ZombieWorkState : ZombieBaseState
 {
+    [SerializeField] AudioClipSystem audioCLip;
+
     public override void EnterState(ZombieStateManager zombie)
     {
         zombie.transform.LookAt(zombie.DefaultPositionLook);
@@ -25,6 +27,11 @@ public class ZombieWorkState : ZombieBaseState
         {
             zombie.SwitchState(zombie._walkState);
 
+        }
+
+        if (audioCLip.isAudioLoop && !zombie.audio.isPlaying)
+        {
+            zombie.PlayAudio(audioCLip.audioClip);
         }
     }
 
