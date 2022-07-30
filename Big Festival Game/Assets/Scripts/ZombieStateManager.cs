@@ -10,6 +10,7 @@ public class ZombieStateManager : MonoBehaviour
     public ZombieWalkState _walkState = new ZombieWalkState();
     public ZombieAttackState _attackState = new ZombieAttackState();
     public ZombieDieState _dieState = new ZombieDieState();
+    public ZombiePauseState _pauseState = new ZombiePauseState();
     [SerializeField]bool _zombieDie;
     public bool ZombieDie { get { return _zombieDie; } set { _zombieDie = value; } }
     [SerializeField] string _currentStateName;
@@ -31,6 +32,7 @@ public class ZombieStateManager : MonoBehaviour
     {
         SwitchState(_workState);
         bruxinha = GameObject.FindGameObjectWithTag("Player");
+        ManagerEvents.GamePlay.onPause += PauseZombie;
     }
 
     // Update is called once per frame
@@ -54,5 +56,22 @@ public class ZombieStateManager : MonoBehaviour
         auxState = _currentState;
         _auxStateName = auxState.GetCurrentState(this);
         SwitchState(_dieState);
+    }
+
+
+    public void PauseZombie(bool value)
+    {
+        if (value)
+        {
+            auxState = _currentState;
+            zombieAnimator.speed = 0;
+            SwitchState(_pauseState);
+        }
+        else
+        {
+            zombieAnimator.speed = 1;
+            SwitchState(auxState);
+            auxState = null;
+        }
     }
 }

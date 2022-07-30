@@ -18,4 +18,16 @@ public class ManagerEvents : MonoBehaviour
         }
     }
 
+    public static class GamePlay
+    {
+        public static event Action<bool> onPause;
+
+        public static void PausedGame(bool value)
+        {
+            if (onPause != null)
+            {
+                onPause(value);
+            }
+        }
+    }
 }

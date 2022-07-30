@@ -14,7 +14,19 @@ public class ZombieAttackState : ZombieBaseState
     {
         zombie.zombieAnimator.Play("Attack");
         Debug.Log("Zombie preparando ataque");
-        yield return new WaitForSeconds(1.05f);
+        float timePrepareAttack = 0;
+        while(timePrepareAttack < 1.05f)
+        {
+            if (!GameManager._instance.PauseActive) 
+            {
+                yield return new WaitForSeconds(0.1f);
+                timePrepareAttack += 0.1f;
+            }
+            else
+            {
+                yield return new WaitForEndOfFrame();
+            }
+        }
         Collider[] hitPlayer = Physics.OverlapSphere(zombie.AttackPoint.transform.position,2);
         foreach(var objhitted in hitPlayer)
         {
@@ -24,8 +36,20 @@ public class ZombieAttackState : ZombieBaseState
                 objhitted.GetComponent<Bruxa>().TakeDamage();
             }
         }
-        yield return new WaitForSeconds(0.8f);
 
+        float timeAfterAttack = 0;
+        while (timeAfterAttack < 0.8f)
+        {
+            if (!GameManager._instance.PauseActive)
+            {
+                yield return new WaitForSeconds(0.1f);
+                timePrepareAttack += 0.1f;
+            }
+            else
+            {
+                yield return new WaitForEndOfFrame();
+            }
+        }
         zombie.SwitchState(zombie._walkState);
     }
     public override void OnCollisionEnter(ZombieStateManager zombie)
