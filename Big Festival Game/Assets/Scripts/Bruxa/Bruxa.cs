@@ -15,7 +15,8 @@ using UnityEngine;
 public class Bruxa : MonoBehaviour
 {
 
-           BruxaBaseState       currentState;
+    BruxaBaseState       currentState;
+    BruxaBaseState       auxState;
     public string               currentStateName;
     [Header("States")]
     public BruxaStoppedState        stoppedState        = new BruxaStoppedState();
@@ -25,6 +26,7 @@ public class Bruxa : MonoBehaviour
     public BruxaDamagedState        damagedState        = new BruxaDamagedState();
     public BruxaFlyingDamagedState  flyingDamagedState  = new BruxaFlyingDamagedState();
     public BruxaDeadState           deadState           = new BruxaDeadState();
+    public BruxaPausaState          pauseState          = new BruxaPausaState();
     [Header ("Witch Data")]
     public Rigidbody                myRb;
     public int                      currenteLife         = 4;
@@ -44,13 +46,12 @@ public class Bruxa : MonoBehaviour
         statesFromString.Add("Damage", damagedState);
         statesFromString.Add("FlyDamage", flyingDamagedState);
         statesFromString.Add("Dead", deadState);
-
+        statesFromString.Add("Pause", pauseState);
 
         // myRb.GetComponent<Rigidbody>();
         SwitchState(stoppedState);
         InventoryWitch = GetComponent<Inventory>();
-        
-
+        ManagerEvents.GamePlay.onPause += PauseBruxinha;
     }
 
 
@@ -92,9 +93,28 @@ public class Bruxa : MonoBehaviour
     {
         if (currentState != null)
             currentState.UpdateState(this);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ManagerEvents.GamePlay.PausedGame(currentState.GetStateName() != "BruxaPausaState");
+        }
     }
-
-
+    
+    public void PauseBruxinha(bool value)
+    {
+        if (value)
+        {
+            auxState = currentState;
+            bruxaAnimator.speed = 0;
+            SwitchState(pauseState);
+        }
+        else
+        {
+            bruxaAnimator.speed = 1;
+            SwitchState(auxState);
+            auxState = null;
+        }
+    }
     // atualiza o fixedUpdate do estado atual
     void FixedUpdateState()
     {
