@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class ZombieStateManager : MonoBehaviour
 {
+    public AudioSource audio;
     ZombieBaseState _currentState;
     public ZombieBaseState auxState;
     public ZombieWorkState _workState = new ZombieWorkState();
@@ -73,5 +74,12 @@ public class ZombieStateManager : MonoBehaviour
             SwitchState(auxState);
             auxState = null;
         }
+    }
+
+
+    public void PlayAudio(AudioClip audioClip)
+    {
+        audio.clip = audioClip;
+        audio.Play();
     }
 }

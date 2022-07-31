@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundConfig : MonoBehaviour
 {
     AudioSource _audio;
+    [SerializeField] float maxSound;
     private void Start()
     {
         _audio = GetComponent<AudioSource>();
@@ -21,6 +22,6 @@ public class SoundConfig : MonoBehaviour
 
     private void ConfigAudioVolume(bool value)
     {
-        _audio.volume = value ? 100 : 0;
+        _audio.volume = value ? maxSound : 0;
     }
 }

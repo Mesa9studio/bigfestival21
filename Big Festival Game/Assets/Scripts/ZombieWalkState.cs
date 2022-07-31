@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public class ZombieWalkState : ZombieBaseState
 {
     [SerializeField]float recoilDamageTime=0.5f;
     [SerializeField]float currentDamageTime = 0;
     [SerializeField]bool doattack = false;
+    [SerializeField] AudioClipSystem audioCLip;
     public override void EnterState(ZombieStateManager zombie)
     {
         currentDamageTime = 0;
@@ -46,6 +49,12 @@ public class ZombieWalkState : ZombieBaseState
         else
         {
             doattack = false;
+        }
+
+
+        if(audioCLip.isAudioLoop && !zombie.audio.isPlaying)
+        {
+            zombie.PlayAudio(audioCLip.audioClip);
         }
     }
 

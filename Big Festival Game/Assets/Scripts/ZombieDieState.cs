@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public class ZombieDieState : ZombieBaseState
 {
+    [SerializeField]AudioClipSystem audioCLip;
     public override void EnterState(ZombieStateManager zombie)
     {
         zombie.ZombieDie = true;
@@ -16,6 +17,7 @@ public class ZombieDieState : ZombieBaseState
     IEnumerator ZombieDieCoroutine(ZombieStateManager zombie)
     {
         zombie.zombieAnimator.Play("dead");
+        zombie.PlayAudio(audioCLip.audioClip);
         yield return new WaitForSeconds(6.7f);
         zombie.ZombieDie = false;
         zombie.SwitchState(zombie.auxState);

@@ -134,10 +134,11 @@ public class Bruxa : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         currentState.OnCollisionEnter(this,collision);
-        if(collision.gameObject.tag == "Faca" || collision.gameObject.tag == "Abobora")
+        if (collision.gameObject.GetComponentInParent<ICollectableItem>()!=null)
         {
-            InventoryWitch.CollectItem(collision.gameObject.GetComponentInParent<Item>().itemInfo);
-            Destroy(collision.gameObject.transform.parent.gameObject);
+            ItemCollectable item= collision.gameObject.GetComponentInParent<ItemCollectable>();
+            InventoryWitch.CollectItem(item.itemInfo);
+            item.DestroyItem();
         }
         else if(collision.gameObject.tag == Tags.Rua)
         {
